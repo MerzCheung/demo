@@ -113,6 +113,20 @@ class DemoApplicationTests {
     }
 
     @Test
+    public void test13() {
+        List<Integer> ids = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        int start = 0;
+        int curr = 4;
+        int end = 0;
+        while (start < ids.size()) {
+            end = start + curr;
+            List<Integer> subIds = ids.subList(start, Math.min(ids.size(), end));
+            System.out.println(subIds);
+            start += curr;
+        }
+    }
+
+    @Test
     void sys2() {
         List<Person> list = new ArrayList<>();
         Person p1 = Person.builder().name("张三").address(null).build();
