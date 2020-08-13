@@ -121,9 +121,16 @@ class DemoApplicationTests {
         while (start < ids.size()) {
             end = start + curr;
             List<Integer> subIds = ids.subList(start, Math.min(ids.size(), end));
-            System.out.println(subIds);
             start += curr;
+//            subIds.clear();
         }
+    }
+
+    @Test
+    public void test14() {
+        Map<String, String> map = new HashMap<>();
+        map.put(null, null);
+        System.out.println(map);
     }
 
     @Test
