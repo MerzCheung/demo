@@ -1,11 +1,15 @@
 package com.example.demo;
 
 import com.alibaba.fastjson.JSON;
+import com.example.demo.service.TestService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -16,6 +20,9 @@ import static java.util.stream.Collectors.toCollection;
 
 @SpringBootTest
 class DemoApplicationTests {
+
+    @Autowired
+    private TestService testService;
 
     @Test
     void sys() {
@@ -131,6 +138,45 @@ class DemoApplicationTests {
         Map<String, String> map = new HashMap<>();
         map.put(null, null);
         System.out.println(map);
+    }
+
+    @Test
+    public void test15() throws IllegalAccessException {
+        Person p = new Person();
+        p.setId(1);
+        p.setName("zhangsan");
+        p.setAddress("123");
+        testService.test(p);
+    }
+
+
+    @Test
+    public void test16() throws IllegalAccessException {
+        Map map = new HashMap();
+        System.out.println(JSON.toJSONString(map));
+    }
+
+    @Test
+    public void test17() throws IllegalAccessException {
+        List<Person> list = new ArrayList<>();
+        Person p1 = new Person();
+        Person p2 = new Person();
+        list.add(p1);
+        list.add(p2);
+        Person p3 = new Person();
+        p3.setList(list);
+        Field[] declaredFields = p3.getClass().getDeclaredFields();
+        for (Field declaredField : declaredFields) {
+            declaredField.setAccessible(true);
+            String name = declaredField.getName();
+            Object value = declaredField.get(p3);
+            System.out.println(declaredField.getGenericType() instanceof ParameterizedType);
+            if (declaredField.getGenericType() instanceof ParameterizedType){
+                ParameterizedType pt = (ParameterizedType) declaredField.getGenericType();
+                System.out.println(pt.getActualTypeArguments()[0].equals(Person.class));
+                System.out.println((List<Person>)value);
+            }
+        }
     }
 
     @Test

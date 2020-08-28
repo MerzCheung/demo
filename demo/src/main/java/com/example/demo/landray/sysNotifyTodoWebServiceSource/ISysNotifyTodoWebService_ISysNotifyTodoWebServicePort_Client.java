@@ -48,10 +48,11 @@ public final class ISysNotifyTodoWebService_ISysNotifyTodoWebServicePort_Client 
             System.out.println("Invoking getTodo...");
             NotifyTodoGetContext _getTodo_arg0 = new NotifyTodoGetContext();
             try {
-                _getTodo_arg0.setTargets("{\"PersonNo\": \"00005453\"}");
-                _getTodo_arg0.setType(1);
+                _getTodo_arg0.setTargets("{\"PersonNo\": \"00005756\"}");
+                _getTodo_arg0.setType(3);
                 _getTodo_arg0.setPageNo(1);
                 _getTodo_arg0.setRowSize(10000);
+//                _getTodo_arg0.setOtherCond("[{\"modelId\": \"173eba1933c12fe9d745f284fce999d9\"}]");
                 NotifyTodoAppResult _getTodo__return = port.getTodo(_getTodo_arg0);
                 System.out.println("getTodo.result=" + JSON.toJSONString(_getTodo__return));
 
@@ -79,20 +80,20 @@ public final class ISysNotifyTodoWebService_ISysNotifyTodoWebServicePort_Client 
             }
         }
         // 获取待办数量
-        {
-            System.out.println("Invoking getTodoCount...");
-            NotifyTodoGetCountContext _getTodoCount_arg0 = new NotifyTodoGetCountContext();
-            try {
-                _getTodoCount_arg0.setTarget("{\"PersonNo\": \"00005453\"}");
-                _getTodoCount_arg0.setTypes("[{\"type\":1}]");
-                NotifyTodoAppResult _getTodoCount__return = port.getTodoCount(_getTodoCount_arg0);
-                System.out.println("getTodoCount.result=" + JSON.toJSONString(_getTodoCount__return));
-
-            } catch (Exception_Exception e) {
-                System.out.println("Expected exception: Exception has occurred.");
-                System.out.println(e.toString());
-            }
-        }
+//        {
+//            System.out.println("Invoking getTodoCount...");
+//            NotifyTodoGetCountContext _getTodoCount_arg0 = new NotifyTodoGetCountContext();
+//            try {
+//                _getTodoCount_arg0.setTarget("{\"PersonNo\": \"00005453\"}");
+//                _getTodoCount_arg0.setTypes("[{\"type\":1}]");
+//                NotifyTodoAppResult _getTodoCount__return = port.getTodoCount(_getTodoCount_arg0);
+//                System.out.println("getTodoCount.result=" + JSON.toJSONString(_getTodoCount__return));
+//
+//            } catch (Exception_Exception e) {
+//                System.out.println("Expected exception: Exception has occurred.");
+//                System.out.println(e.toString());
+//            }
+//        }
 
 //        {
 //            System.out.println("Invoking updateTodo...");

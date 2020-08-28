@@ -19,6 +19,13 @@ public class EasyExcelDemoController {
     @Autowired
     private UploadDAO uploadDAO;
 
+    @PostMapping("xdpUpload")
+    @ResponseBody
+    public String xdpUpload(@RequestParam("file") MultipartFile file) throws IOException {
+        EasyExcel.read(file.getInputStream(), new XDPUploadDataListener()).sheet().headRowNumber(1).doRead();
+        return "success";
+    }
+
     /**
      * 文件上传
      * <p>1. 创建excel对应的实体对象 参照{@link UploadData}

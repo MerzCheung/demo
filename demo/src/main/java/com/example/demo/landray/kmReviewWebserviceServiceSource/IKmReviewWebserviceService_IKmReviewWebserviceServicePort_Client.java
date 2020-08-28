@@ -56,12 +56,27 @@ public final class IKmReviewWebserviceService_IKmReviewWebserviceServicePort_Cli
             System.out.println("Invoking approveProcess...");
             KmReviewParamterForm _approveProcess_arg0 = new KmReviewParamterForm();
             try {
-                _approveProcess_arg0.setDocSubject("付款申请单");
-                _approveProcess_arg0.setFdId("173eba721e9d3e97edbf1774c3c88bb8");
+                _approveProcess_arg0.setDocSubject("测试驳回1");
+                _approveProcess_arg0.setFdId("1741f4e83295deec0e0bc8c4ea7a320c");
                 _approveProcess_arg0.setFdTemplateId("15c7c08623cfcb55946daa847bcb6efb");
-                _approveProcess_arg0.setDocCreator("{\"PersonNo\": \"00005453\"}");
-                String flowParam = "{operationType:\"handler_pass\",auditNode:\"同意\",futureNodeId:\"N78\",changeNodeHandlers:[\"N78:17370a85e82dedba2d42fae406f8df11;17370a85f8f573fbfebf22f4a2eac7f0\"]}";
+                // _approveProcess_arg0.setFdKeyword();
+//                _approveProcess_arg0.setDocStatus("20");
+                _approveProcess_arg0.setDocCreator("{\"PersonNo\": \"00005856\"}");
+//                // 流程表单
+//                String formValues = "{\"fd_2fdec3b42db6b0\":\"17370a85d35b7cfad93c8ca4f458e51a\", \"fd_314f3cca32d552\":\"1699e43cfc5b06e118e1e1c47a7a5acd\",\"fd_2fdec3b8b4242a\":\"2020-08-14\"," +
+//                        "\"fd_341c050386f954\":\"100.03\",\"fd_341c057a02ad2a\":\"现金\",\"fd_341c07e33ea8ae\":\"1\",\"fd_34127eaaf8fa44\":\"张三\"," +
+//                        "\"fd_34127ec23270c2\":\"6215581813000207184\",\"fd_341c05d124f65a\":\"合同\",\"fd_38c2a965a4ccf8\":\"ming.zhang2\"}";
+//                _approveProcess_arg0.setFormValues(formValues);
+//                String flowParam = "{operationType:\"handler_pass\", auditNode:\"请审核\"}";
+////                String flowParam = "{operationType:\"handler_pass\", auditNode:\"请审核\", futureNodeId:\"N75\", changeNodeHandlers:[\"N75:17370a85e82dedba2d42fae406f8df11\"]}";
+//                _approveProcess_arg0.setFlowParam(flowParam);
+//                // 附件
+//                List<AttachmentForm> attForms = createAllAtts();
+//                _approveProcess_arg0.getAttachmentForms().addAll(attForms);
+
+                String flowParam = "{operationType:\"handler_refuse\",auditNode:\"拒绝\", futureNodeId:\"N2\"}";
                 _approveProcess_arg0.setFlowParam(flowParam);
+
                 String _approveProcess__return = port.approveProcess(_approveProcess_arg0);
                 System.out.println("approveProcess.result=" + _approveProcess__return);
 
@@ -76,6 +91,28 @@ public final class IKmReviewWebserviceService_IKmReviewWebserviceServicePort_Cli
 //            System.out.println("Invoking updateReviewInfo...");
 //            KmReviewParamterForm _updateReviewInfo_arg0 = new KmReviewParamterForm();
 //            try {
+//                _updateReviewInfo_arg0.setFdId("1740b46dc31f482a3d932574519ba546");
+//                // 文档模板id
+//                _updateReviewInfo_arg0.setFdTemplateId("15c7c08623cfcb55946daa847bcb6efb");
+//                // 文档标题
+//                _updateReviewInfo_arg0.setDocSubject("付款申请单6.3");
+//                // 流程发起人
+//                _updateReviewInfo_arg0.setDocCreator("{\"PersonNo\": \"00005756\"}");
+//                // 10: 草稿 20: 待审
+//                _updateReviewInfo_arg0.setDocStatus("20");
+//                // 文档关键字
+////            form.setFdKeyword("[\"物料\", \"采购\"]");
+//                // 流程表单
+//                String formValues = "{\"fd_2fdec3b42db6b0\":\"17370a85d35b7cfad93c8ca4f458e51a\", \"fd_314f3cca32d552\":\"1699e43cfc5b06e118e1e1c47a7a5acd\",\"fd_2fdec3b8b4242a\":\"2020-08-14\"," +
+//                        "\"fd_341c050386f954\":\"100.02\",\"fd_341c057a02ad2a\":\"现金\",\"fd_341c07e33ea8ae\":\"1\",\"fd_34127eaaf8fa44\":\"张三\"," +
+//                        "\"fd_34127ec23270c2\":\"6215581813000207184\",\"fd_341c05d124f65a\":\"合同\",\"fd_38c2a965a4ccf8\":\"ming.zhang2\"}";
+//                _updateReviewInfo_arg0.setFormValues(formValues);
+//                // 流程参数
+////                String flowParam = "{auditNode:\"请审核\", futureNodeId:\"N75\", changeNodeHandlers:[\"N75:17370a85e82dedba2d42fae406f8df11;17370a85f8f573fbfebf22f4a2eac7f0\"]}";
+////                _updateReviewInfo_arg0.setFlowParam(flowParam);
+//
+////                List<AttachmentForm> attForms = createAllAtts();
+////                _updateReviewInfo_arg0.getAttachmentForms().addAll(attForms);
 //                String _updateReviewInfo__return = port.updateReviewInfo(_updateReviewInfo_arg0);
 //                System.out.println("updateReviewInfo.result=" + _updateReviewInfo__return);
 //
@@ -86,38 +123,40 @@ public final class IKmReviewWebserviceService_IKmReviewWebserviceServicePort_Cli
 //        }
 
         // 启动审批流程
-//        {
-//            System.out.println("Invoking addReview...");
-//            KmReviewParamterForm form = new KmReviewParamterForm();
-//            try {
-//                // 文档模板id
-//                form.setFdTemplateId("15c7c08623cfcb55946daa847bcb6efb");
-//                // 文档标题
-//                form.setDocSubject("付款申请单2");
-//                // 流程发起人
-//                form.setDocCreator("{\"PersonNo\": \"00005756\"}");
-//                // 文档关键字
-////            form.setFdKeyword("[\"物料\", \"采购\"]");
-//                // 流程表单
-//                String formValues = "{\"fd_2fdec3b42db6b0\":\"17370a7db46409d1d4dd02e4e83bc6d0\", \"fd_314f3cca32d552\":\"1699e43cfc5b06e118e1e1c47a7a5acd\",\"fd_2fdec3b8b4242a\":\"2020-08-14\"," +
+        {
+            System.out.println("Invoking addReview...");
+            KmReviewParamterForm form = new KmReviewParamterForm();
+            try {
+                // 文档模板id
+                form.setFdTemplateId("15c7c08623cfcb55946daa847bcb6efb");
+                // 文档标题
+                form.setDocSubject("测试驳回1");
+                // 流程发起人
+                form.setDocCreator("{\"PersonNo\": \"00005856\"}");
+                // 10: 草稿 20: 待审
+                form.setDocStatus("10");
+                // 文档关键字
+//            form.setFdKeyword("[\"物料\", \"采购\"]");
+                // 流程表单
+//                String formValues = "{\"fd_2fdec3b42db6b0\":\"17370a85d35b7cfad93c8ca4f458e51a\", \"fd_314f3cca32d552\":\"1699e43cfc5b06e118e1e1c47a7a5acd\",\"fd_2fdec3b8b4242a\":\"2020-08-14\"," +
 //                        "\"fd_341c050386f954\":\"100.02\",\"fd_341c057a02ad2a\":\"现金\",\"fd_341c07e33ea8ae\":\"1\",\"fd_34127eaaf8fa44\":\"张三\"," +
-//                        "\"fd_34127ec23270c2\":\"6215581813000207184\",\"fd_341c05d124f65a\":\"合同\"}";
+//                        "\"fd_34127ec23270c2\":\"6215581813000207184\",\"fd_341c05d124f65a\":\"合同\",\"fd_38c2a965a4ccf8\":\"ming.zhang2\"}";
 //                form.setFormValues(formValues);
-//                // 流程参数
+                // 流程参数
 //                String flowParam = "{auditNode:\"请审核\", futureNodeId:\"N75\", changeNodeHandlers:[\"N75:17370a85e82dedba2d42fae406f8df11;17370a85f8f573fbfebf22f4a2eac7f0\"]}";
 //                form.setFlowParam(flowParam);
-//
+
 //                List<AttachmentForm> attForms = createAllAtts();
 //                form.getAttachmentForms().addAll(attForms);
-//
-//                String _addReview__return = port.addReview(form);
-//                System.out.println("addReview.result=" + _addReview__return);
-//
-//            } catch (Exception_Exception e) {
-//                System.out.println("Expected exception: Exception has occurred.");
-//                System.out.println(e.toString());
-//            }
-//        }
+
+                String _addReview__return = port.addReview(form);
+                System.out.println("addReview.result=" + _addReview__return);
+
+            } catch (Exception_Exception e) {
+                System.out.println("Expected exception: Exception has occurred.");
+                System.out.println(e.toString());
+            }
+        }
 
         System.exit(0);
     }

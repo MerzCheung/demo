@@ -54,8 +54,8 @@ public final class ISysSynchroGetOrgWebService_ISysSynchroGetOrgWebServicePort_C
             System.out.println("Invoking getElementsBaseInfo...");
             SysSynchroGetOrgBaseInfoContext _getElementsBaseInfo_arg0 = new SysSynchroGetOrgBaseInfoContext();
             try {
-                _getElementsBaseInfo_arg0.setReturnType("[{\"type\":\"no\"}]");
-                _getElementsBaseInfo_arg0.setReturnOrgType("[{\"type\":\"person\"}]");
+                _getElementsBaseInfo_arg0.setReturnType("[{\"type\":\"no\"},{\"type\":\"keyword\"}]");
+                _getElementsBaseInfo_arg0.setReturnOrgType("[{\"type\":\"dept\"},{\"type\":\"person\"}]");
                 SysSynchroOrgResult _getElementsBaseInfo__return = port.getElementsBaseInfo(_getElementsBaseInfo_arg0);
                 System.out.println("getElementsBaseInfo.result=" + JSON.toJSON(_getElementsBaseInfo__return));
 

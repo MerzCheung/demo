@@ -59,7 +59,7 @@ public final class ILbpmFlowLogGetWebService_ILbpmFlowLogGetWebServicePort_Clien
             System.out.println("Invoking getFlowLog...");
             LbpmFlowLogContext _getFlowLog_arg0 = new LbpmFlowLogContext();
             try {
-                _getFlowLog_arg0.setCount(10000);
+                _getFlowLog_arg0.setCount(1);
                 _getFlowLog_arg0.setTimestamp("2020-08-14 00:00:47.000");
                 LbpmFlowLogResult _getFlowLog__return = port.getFlowLog(_getFlowLog_arg0);
                 System.out.println("getFlowLog.result=" + JSON.toJSON(_getFlowLog__return));
