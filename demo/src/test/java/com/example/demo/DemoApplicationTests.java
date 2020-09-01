@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.alibaba.fastjson.JSON;
+import com.example.demo.landray.sysNotifyTodoWebServiceSource.Message;
 import com.example.demo.service.TestService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -177,6 +178,13 @@ class DemoApplicationTests {
                 System.out.println((List<Person>)value);
             }
         }
+    }
+
+    @Test
+    public void test18() {
+        String str = "{\"pageCount\":1,\"pageno\":1,\"count\":1,\"docs\":[{\"id\":\"174244ffbc7d5477ae44e724d8699259\",\"subject\":\"张铭提交的流程已被审批人驳回，请重新提交文档：深圳市万邑通电子商务有限公司-保证金-头程相关费用-上海卓牧企业管理咨询有限公司-10000005-202008-100.0-人民币-CNY\",\"type\":1,\"key\":\"17420082e0ed82dd1b045c24eb5a359a\",\"param1\":\"174244ffbb85b14cf146ec34917937b8\",\"param2\":\"174244ffbbe51e13b08477b417088743\",\"appName\":null,\"modelName\":\"com.landray.kmss.km.review.model.KmReviewMain\",\"level\":3,\"moduleName\":\"流程管理\",\"modelId\":\"17420082e0ed82dd1b045c24eb5a359a\",\"createTime\":\"2020-08-25 14:30:55\",\"creator\":\"ming.zhang2\",\"creatorName\":\"张铭\",\"link\":\"/sys/notify/sys_notify_todo/sysNotifyTodo.do?method=view&fdId=174244ffbc7d5477ae44e724d8699259\"}]}";
+        Object parse = JSON.parseObject(str, Message.class);
+        System.out.println(parse.toString());
     }
 
     @Test
