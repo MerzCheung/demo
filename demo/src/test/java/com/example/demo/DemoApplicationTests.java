@@ -13,6 +13,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static java.util.Comparator.comparing;
@@ -185,6 +186,23 @@ class DemoApplicationTests {
         String str = "{\"pageCount\":1,\"pageno\":1,\"count\":1,\"docs\":[{\"id\":\"174244ffbc7d5477ae44e724d8699259\",\"subject\":\"张铭提交的流程已被审批人驳回，请重新提交文档：深圳市万邑通电子商务有限公司-保证金-头程相关费用-上海卓牧企业管理咨询有限公司-10000005-202008-100.0-人民币-CNY\",\"type\":1,\"key\":\"17420082e0ed82dd1b045c24eb5a359a\",\"param1\":\"174244ffbb85b14cf146ec34917937b8\",\"param2\":\"174244ffbbe51e13b08477b417088743\",\"appName\":null,\"modelName\":\"com.landray.kmss.km.review.model.KmReviewMain\",\"level\":3,\"moduleName\":\"流程管理\",\"modelId\":\"17420082e0ed82dd1b045c24eb5a359a\",\"createTime\":\"2020-08-25 14:30:55\",\"creator\":\"ming.zhang2\",\"creatorName\":\"张铭\",\"link\":\"/sys/notify/sys_notify_todo/sysNotifyTodo.do?method=view&fdId=174244ffbc7d5477ae44e724d8699259\"}]}";
         Object parse = JSON.parseObject(str, Message.class);
         System.out.println(parse.toString());
+    }
+
+    @Test
+    public void test19() {
+        List<Person2> list = new ArrayList<>();
+        Person2 p1 = Person2.builder().age(1).address("11").name("33").build();
+        Person2 p2 = Person2.builder().age(1).address("11").name("12").build();
+        Person2 p3 = Person2.builder().age(2).address("22").name("44").build();
+        Person2 p4 = Person2.builder().age(2).address("22").name("55").build();
+        Person2 p5 = Person2.builder().age(3).address("3").name("66").build();
+        list.add(p1);
+        list.add(p2);
+        list.add(p3);
+        list.add(p4);
+        list.add(p5);
+        Map<Integer, Map<String, List<Person2>>> collect = list.stream().collect(Collectors.groupingBy(Person2::getAge, Collectors.groupingBy(Person2::getAddress)));
+        System.out.println(collect);
     }
 
     @Test
