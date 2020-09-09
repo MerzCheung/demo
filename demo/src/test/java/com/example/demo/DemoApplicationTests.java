@@ -2,6 +2,7 @@ package com.example.demo;
 
 import com.alibaba.fastjson.JSON;
 import com.example.demo.landray.sysNotifyTodoWebServiceSource.Message;
+import com.example.demo.landray.sysNotifyTodoWebServiceSource.MessageDoc;
 import com.example.demo.service.TestService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -183,8 +184,43 @@ class DemoApplicationTests {
     @Test
     public void test18() {
         String str = "{\"pageCount\":1,\"pageno\":1,\"count\":1,\"docs\":[{\"id\":\"174244ffbc7d5477ae44e724d8699259\",\"subject\":\"张铭提交的流程已被审批人驳回，请重新提交文档：深圳市万邑通电子商务有限公司-保证金-头程相关费用-上海卓牧企业管理咨询有限公司-10000005-202008-100.0-人民币-CNY\",\"type\":1,\"key\":\"17420082e0ed82dd1b045c24eb5a359a\",\"param1\":\"174244ffbb85b14cf146ec34917937b8\",\"param2\":\"174244ffbbe51e13b08477b417088743\",\"appName\":null,\"modelName\":\"com.landray.kmss.km.review.model.KmReviewMain\",\"level\":3,\"moduleName\":\"流程管理\",\"modelId\":\"17420082e0ed82dd1b045c24eb5a359a\",\"createTime\":\"2020-08-25 14:30:55\",\"creator\":\"ming.zhang2\",\"creatorName\":\"张铭\",\"link\":\"/sys/notify/sys_notify_todo/sysNotifyTodo.do?method=view&fdId=174244ffbc7d5477ae44e724d8699259\"}]}";
-        Object parse = JSON.parseObject(str, Message.class);
+        Message parse = JSON.parseObject(str, Message.class);
         System.out.println(parse.toString());
+        String str2 = "{\"errorPage\":\"true\",\"message\":\"很抱歉，未找到符合条件的记录！\"}";
+        Message parse2 = JSON.parseObject(str2, Message.class);
+        List<MessageDoc> docs = parse2.getDocs();
+        for (MessageDoc doc : docs) {
+            System.out.println("doc:" + doc);
+        }
+    }
+    @Test
+    public void test19() {
+        List<BasePerson> list1 = new ArrayList<>();
+        BasePerson p1 = new BasePerson();
+        p1.setId(1);
+        p1.setAge(1);
+        BasePerson p2 = new BasePerson();
+        p1.setId(2);
+        p1.setAge(2);
+        list1.add(p1);
+        list1.add(p2);
+        BasePerson p3 = new BasePerson();
+        p1.setId(1);
+        p1.setAge(1);
+        list1.add(p3);
+        List<BasePerson> list2 = new ArrayList<>();
+        BasePerson p4 = new BasePerson();
+        p1.setId(4);
+        p1.setAge(4);
+        list2.add(p3);
+        list2.add(p4);
+//        list1.addAll(list2);
+        List<BasePerson> list = list1.stream().collect(
+                collectingAndThen(toCollection(() -> new TreeSet<>(comparing(BasePerson::getId))), ArrayList::new)
+        );
+        for (BasePerson person : list) {
+            System.out.println(person.toString());
+        }
     }
 
     @Test
