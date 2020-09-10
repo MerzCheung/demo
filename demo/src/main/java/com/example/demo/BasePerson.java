@@ -5,4 +5,6 @@ import lombok.Data;
 @Data
 public class BasePerson {
     private Integer id;
+
+    private Integer age;
 }

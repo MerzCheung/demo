@@ -38,21 +38,21 @@ public class WebServiceClient {
 		Object service = callService(cfg.getAddress(), cfg.getServiceClass());
 		// 请在此处添加业务代码
 		IKmReviewWebserviceService iKmReviewWebserviceService = (IKmReviewWebserviceService)service;
-		String id = addReview(iKmReviewWebserviceService);
-		approveProcess(iKmReviewWebserviceService, id);
-//		approveProcess2(iKmReviewWebserviceService, "17420082e0ed82dd1b045c24eb5a359a");
+//		String id = addReview(iKmReviewWebserviceService);
+//		approveProcess(iKmReviewWebserviceService, id);
+		approveProcess2(iKmReviewWebserviceService, "17467b76951925b7ed501eb46d0bd9e8");
 
 
-		WebServiceConfig cfg2 = WebServiceConfig.getInstance("sysNotifyTodoWebService");
-		Object service2 = callService(cfg2.getAddress(), cfg2.getServiceClass());
-		ISysNotifyTodoWebService iSysNotifyTodoWebService = (ISysNotifyTodoWebService) service2;
-		NotifyTodoGetContext _getTodo_arg0 = new NotifyTodoGetContext();
-		_getTodo_arg0.setTargets("{\"PersonNo\": \"00005856\"}");
-		_getTodo_arg0.setType(1);
-		_getTodo_arg0.setPageNo(1);
-		_getTodo_arg0.setRowSize(10000);
-		NotifyTodoAppResult _getTodo__return = iSysNotifyTodoWebService.getTodo(_getTodo_arg0);
-		System.out.println("getTodo.result=" + JSON.toJSONString(_getTodo__return));
+//		WebServiceConfig cfg2 = WebServiceConfig.getInstance("sysNotifyTodoWebService");
+//		Object service2 = callService(cfg2.getAddress(), cfg2.getServiceClass());
+//		ISysNotifyTodoWebService iSysNotifyTodoWebService = (ISysNotifyTodoWebService) service2;
+//		NotifyTodoGetContext _getTodo_arg0 = new NotifyTodoGetContext();
+//		_getTodo_arg0.setTargets("{\"PersonNo\": \"00005856\"}");
+//		_getTodo_arg0.setType(1);
+//		_getTodo_arg0.setPageNo(1);
+//		_getTodo_arg0.setRowSize(10000);
+//		NotifyTodoAppResult _getTodo__return = iSysNotifyTodoWebService.getTodo(_getTodo_arg0);
+//		System.out.println("getTodo.result=" + JSON.toJSONString(_getTodo__return));
 	}
 
 	private static void approveProcess2(IKmReviewWebserviceService iKmReviewWebserviceService, String id) throws Exception {
@@ -84,13 +84,13 @@ public class WebServiceClient {
 //		String flowParam = "{operationType:\"handler_pass\", auditNode:\"请审核\", futureNodeId:\"N75\", changeNodeHandlers:[\"N75:17370a85e82dedba2d42fae406f8df11\"]}";
 		_approveProcess_arg0.setFlowParam(flowParam);
 		// 附件
-//		List<AttachmentForm> attForms = createAllAtts();
-//		_approveProcess_arg0.getAttachmentForms().addAll(attForms);
+		List<AttachmentForm> attForms = createAllAtts();
+		_approveProcess_arg0.getAttachmentForms().addAll(attForms);
 
 //		String flowParam = "{operationType:\"handler_refuse\",auditNode:\"拒绝\", futureNodeId:\"N2\"}";
 //		_approveProcess_arg0.setFlowParam(flowParam);
 
-		String _approveProcess__return = iKmReviewWebserviceService.approveProcess(_approveProcess_arg0);
+		String _approveProcess__return = iKmReviewWebserviceService.updateReviewInfo(_approveProcess_arg0);
 		System.out.println("approveProcess.result=" + _approveProcess__return);
 	}
 
@@ -123,8 +123,8 @@ public class WebServiceClient {
 //		String flowParam = "{operationType:\"handler_pass\", auditNode:\"请审核\", futureNodeId:\"N75\", changeNodeHandlers:[\"N75:17370a85e82dedba2d42fae406f8df11\"]}";
 		_approveProcess_arg0.setFlowParam(flowParam);
 		// 附件
-//		List<AttachmentForm> attForms = createAllAtts();
-//		_approveProcess_arg0.getAttachmentForms().addAll(attForms);
+		List<AttachmentForm> attForms = createAllAtts();
+		_approveProcess_arg0.getAttachmentForms().addAll(attForms);
 
 //		String flowParam = "{operationType:\"handler_refuse\",auditNode:\"拒绝\", futureNodeId:\"N2\"}";
 //		_approveProcess_arg0.setFlowParam(flowParam);
@@ -207,7 +207,7 @@ public class WebServiceClient {
 		AttachmentForm attForm = new AttachmentForm();
 		attForm.setFdFileName(fileName);
 		// 设置附件关键字，表单模式下为附件控件的id
-		attForm.setFdKey("fd_2ff647e86b4688");
+		attForm.setFdKey("fd_37cee0c4b3da46");
 		DataSource dataSource = new FileDataSource("C:\\Users\\ming.zhang2\\Desktop\\" + fileName);
 		DataHandler dataHandler = new DataHandler(dataSource);
 		attForm.setFdAttachment(dataHandler);
@@ -222,7 +222,7 @@ public class WebServiceClient {
 		AttachmentForm attForm = new AttachmentForm();
 		attForm.setFdFileName(fileName);
 		// 设置附件关键字，表单模式下为附件控件的id
-		attForm.setFdKey("fd_2ff647e86b4688");
+		attForm.setFdKey("fd_37cee0c4b3da46");
 		URL url = new URL("http://files.winit.com.cn/uploads/ftp/account_ftp/2018/ups/original_bill/31AE88-201802.xlsx");
 		DataSource dataSource = new URLDataSource(url);
 		DataHandler dataHandler = new DataHandler(dataSource);
