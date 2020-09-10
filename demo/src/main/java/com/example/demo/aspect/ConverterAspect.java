@@ -2,16 +2,20 @@ package com.example.demo.aspect;
 
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.alibaba.excel.converters.AutoConverter;
+import com.alibaba.fastjson.JSON;
 import com.example.demo.annotation.Converter;
 import com.example.demo.converter.ConverterBase;
+import com.example.demo.landray.kmReviewWebserviceServiceSource.AttachmentForm;
+import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Field;
-import java.util.HashSet;
-import java.util.Set;
+import java.lang.reflect.ParameterizedType;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Aspect
 @Component
@@ -74,4 +78,54 @@ public class ConverterAspect {
             }
         }
     }
+
+//    private List<AttachmentForm> attachmentFormsConverter(ReviewBaseEntity reviewBaseEntity, List<ProcessFieldMappingEntity> fields) throws Exception {
+//        Map<String, String> fieldMap = fields.stream().collect(Collectors.toMap(ProcessFieldMappingEntity::getAttribute, ProcessFieldMappingEntity::getField, (k1, k2) -> k1));
+//        if (!fieldMap.isEmpty()) {
+//            List<AttachmentForm> attForms = new ArrayList<AttachmentForm>();
+//            Field[] declaredFields = reviewBaseEntity.getClass().getDeclaredFields();
+//            for (Field declaredField : declaredFields) {
+//                declaredField.setAccessible(true);
+//                String name = declaredField.getName();
+//                Object value = declaredField.get(reviewBaseEntity);
+//                if (StringUtils.isNotBlank(fieldMap.get(name)) && value != null) {
+//                    if (declaredField.getGenericType() instanceof ParameterizedType) {
+//                        ParameterizedType pt = (ParameterizedType) declaredField.getGenericType();
+//                        if (pt.getActualTypeArguments()[0].equals(AttachmentEntity.class)) {
+//                            List<AttachmentEntity> attachmentEntities = (List<AttachmentEntity>) value;
+//                            String fdKey = fieldMap.get(name);
+//                            for (AttachmentEntity attachmentEntity : attachmentEntities) {
+//                                AttachmentForm attachmentForm = createUrlFile(fdKey, attachmentEntity.getFileName(), attachmentEntity.getUrl());
+//                                attForms.add(attachmentForm);
+//                            }
+//                        } else {
+//                            throw new SMSException("附件类型请指定List<AttachmentEntity>");
+//                        }
+//                    } else {
+//                        throw new SMSException("附件类型请指定List<AttachmentEntity>");
+//                    }
+//                }
+//            }
+//            return attForms;
+//        }
+//        return null;
+//    }
+//
+//    private String formValuesConverter(ReviewBaseEntity reviewBaseEntity, List<ProcessFieldMappingEntity> fields) throws IllegalAccessException {
+//        Map<String, String> fieldMap = fields.stream().collect(Collectors.toMap(ProcessFieldMappingEntity::getAttribute, ProcessFieldMappingEntity::getField, (k1, k2) -> k1));
+//        if (!fieldMap.isEmpty()) {
+//            Map map = new HashMap();
+//            Field[] declaredFields = reviewBaseEntity.getClass().getDeclaredFields();
+//            for (Field declaredField : declaredFields) {
+//                declaredField.setAccessible(true);
+//                String name = declaredField.getName();
+//                Object value = declaredField.get(reviewBaseEntity);
+//                if (StringUtils.isNotBlank(fieldMap.get(name)) && value != null) {
+//                    map.put(fieldMap.get(name), value);
+//                }
+//            }
+//            return JSON.toJSONString(map);
+//        }
+//        return null;
+//    }
 }
