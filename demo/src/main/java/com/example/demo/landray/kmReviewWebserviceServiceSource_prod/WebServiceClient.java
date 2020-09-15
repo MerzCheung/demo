@@ -8,6 +8,7 @@ import com.example.demo.landray.kmReviewWebserviceServiceSource.KmReviewParamter
 import com.example.demo.landray.sysNotifyTodoWebServiceSource.ISysNotifyTodoWebService;
 import com.example.demo.landray.sysNotifyTodoWebServiceSource.NotifyTodoAppResult;
 import com.example.demo.landray.sysNotifyTodoWebServiceSource.NotifyTodoGetContext;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.cxf.interceptor.LoggingInInterceptor;
 import org.apache.cxf.interceptor.LoggingOutInterceptor;
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
@@ -37,22 +38,30 @@ public class WebServiceClient {
 		WebServiceConfig cfg = WebServiceConfig.getInstance("kmReviewWebserviceService");
 		Object service = callService(cfg.getAddress(), cfg.getServiceClass());
 		// 请在此处添加业务代码
-		IKmReviewWebserviceService iKmReviewWebserviceService = (IKmReviewWebserviceService)service;
+//		IKmReviewWebserviceService iKmReviewWebserviceService = (IKmReviewWebserviceService)service;
 //		String id = addReview(iKmReviewWebserviceService);
 //		approveProcess(iKmReviewWebserviceService, id);
-		approveProcess2(iKmReviewWebserviceService, "17467b76951925b7ed501eb46d0bd9e8");
+//		approveProcess2(iKmReviewWebserviceService, "17467b76951925b7ed501eb46d0bd9e8");
 
 
-//		WebServiceConfig cfg2 = WebServiceConfig.getInstance("sysNotifyTodoWebService");
-//		Object service2 = callService(cfg2.getAddress(), cfg2.getServiceClass());
-//		ISysNotifyTodoWebService iSysNotifyTodoWebService = (ISysNotifyTodoWebService) service2;
-//		NotifyTodoGetContext _getTodo_arg0 = new NotifyTodoGetContext();
-//		_getTodo_arg0.setTargets("{\"PersonNo\": \"00005856\"}");
-//		_getTodo_arg0.setType(1);
-//		_getTodo_arg0.setPageNo(1);
-//		_getTodo_arg0.setRowSize(10000);
-//		NotifyTodoAppResult _getTodo__return = iSysNotifyTodoWebService.getTodo(_getTodo_arg0);
-//		System.out.println("getTodo.result=" + JSON.toJSONString(_getTodo__return));
+		WebServiceConfig cfg2 = WebServiceConfig.getInstance("sysNotifyTodoWebService");
+		Object service2 = callService(cfg2.getAddress(), cfg2.getServiceClass());
+		ISysNotifyTodoWebService iSysNotifyTodoWebService = (ISysNotifyTodoWebService) service2;
+		NotifyTodoGetContext _getTodo_arg0 = new NotifyTodoGetContext();
+		_getTodo_arg0.setTargets("{\"PersonNo\": \"00005856\"}");
+		_getTodo_arg0.setType(1);
+		_getTodo_arg0.setPageNo(1);
+		_getTodo_arg0.setRowSize(10000);
+		NotifyTodoAppResult todo = iSysNotifyTodoWebService.getTodo(_getTodo_arg0);
+		if (todo != null) {
+			Message message = JSON.parseObject(todo.getMessage(), Message.class);
+			List<MessageDoc> docs = message.getDocs();
+			if (CollectionUtils.isNotEmpty(docs)) {
+				for (MessageDoc doc : docs) {
+					System.out.println(doc);
+				}
+			}
+		}
 	}
 
 	private static void approveProcess2(IKmReviewWebserviceService iKmReviewWebserviceService, String id) throws Exception {
