@@ -39,25 +39,27 @@ public class WebServiceClient {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
-		WebServiceConfig cfg = WebServiceConfig.getInstance("sysSynchroGetOrgWebService");
-		Object service = callService(cfg.getAddress(), cfg.getServiceClass());
-		ISysSynchroGetOrgWebService orgWebService = (ISysSynchroGetOrgWebService)service;
+//		WebServiceConfig cfg = WebServiceConfig.getInstance("sysSynchroGetOrgWebService");
+//		Object service = callService(cfg.getAddress(), cfg.getServiceClass());
+//		ISysSynchroGetOrgWebService orgWebService = (ISysSynchroGetOrgWebService)service;
 //		SysSynchroGetOrgBaseInfoContext context = new SysSynchroGetOrgBaseInfoContext();
 //		context.setReturnOrgType("[{\"type\":\"person\"}]");
+//		context.setReturnType("[{\"type\":\"no\"}]");
 //		SysSynchroOrgResult elementsBaseInfo = orgWebService.getElementsBaseInfo(context);
-//		System.out.println(elementsBaseInfo);
-		SysSynchroGetOrgInfoContext context = new SysSynchroGetOrgInfoContext();
-		context.setReturnOrgType("[{\"type\":\"person\"}]");
-		context.setCount(9999);
-		SysSynchroOrgResult updatedElements = orgWebService.getUpdatedElements(context);
-		System.out.println(updatedElements.toString());
-//		WebServiceConfig cfg = WebServiceConfig.getInstance("kmReviewWebserviceService");
-//		Object service = callService(cfg.getAddress(), cfg.getServiceClass());
+//		System.out.println(JSON.toJSONString(elementsBaseInfo));
+//		SysSynchroGetOrgInfoContext context = new SysSynchroGetOrgInfoContext();
+//		context.setReturnOrgType("[{\"type\":\"person\"}]");
+//		context.setCount(9999);
+//		SysSynchroOrgResult updatedElements = orgWebService.getUpdatedElements(context);
+//		System.out.println(updatedElements.toString());
+
+		WebServiceConfig cfg = WebServiceConfig.getInstance("kmReviewWebserviceService");
+		Object service = callService(cfg.getAddress(), cfg.getServiceClass());
 		// 请在此处添加业务代码
-//		IKmReviewWebserviceService iKmReviewWebserviceService = (IKmReviewWebserviceService)service;
+		IKmReviewWebserviceService iKmReviewWebserviceService = (IKmReviewWebserviceService)service;
 //		String id = addReview(iKmReviewWebserviceService);
 //		approveProcess(iKmReviewWebserviceService, id);
-//		updateReviewInfo(iKmReviewWebserviceService, "17622699fee61fb97e0d4174ccb803a8");
+		updateReviewInfo(iKmReviewWebserviceService, "176424c21c8f43672fbc82b44c288b3d");
 //		approveProcess2(iKmReviewWebserviceService, "17467b76951925b7ed501eb46d0bd9e8");
 
 
@@ -216,7 +218,7 @@ public class WebServiceClient {
 		// 流程发起人
 		form.setDocCreator("{\"PersonNo\": \"00005856\"}");
 		// 10: 草稿 20: 待审
-		form.setDocStatus("20");
+		form.setDocStatus("10");
 		// 流程表单
 		String formValues = "{\"fd_38100018d42cce\":\"16ab94a385c324ad363199a46c79965f\", \"fd_37acfd90b47d60\":\"职能部门11\", \"fd_380dcc623762ea\":\"申请人岗位\",\"fd_380e7a0afb2aac\":\"2020-08-14\"," +
 				"\"fd_37ababc482d6ea\":\"保证金\",\"fd_37ac601542818e\":\"10000005\",\"fd_37ac601542818e_text\":\"上海卓牧企业管理咨询有限公司-10000005\",\"fd_37abace0001894\":\"费用申请描述\"," +
@@ -224,7 +226,7 @@ public class WebServiceClient {
 				"\"fd_37abac621f1ddc\":\"0\",\"fd_37ac38c7101510\":\"CASH 现金\",\"fd_37abad3b63c4f8\":\"张三\",\"fd_37abaf1786ce7c\":\"6215581813000207814\"," +
 				"\"fd_37ac36653ea710\":\"深圳市万邑通电子商务有限公司\",\"fd_37ac36653ea710_text\":\"深圳市万邑通电子商务有限公司\",\"fd_380e7a370affc2\":\"A\"" +
 				",\"fd_37ad009aee2198\":\"头程相关费用\",\"fd_37ad009aee2198_text\":\"头程相关费用\",\"fd_37abaf51ab71de\":\"2020-08-14\",\"fd_37abacee886828\":\"202008\"" +
-				",\"fd_37abacf8b7bfec\":\"123456\",\"fd_37abacfaee0ba8\":\"100\",\"fd_37abad171a4670\":\"0\",\"fd_38d303859e135c\":\"PR202012071212321237\"," +
+				",\"fd_37abacf8b7bfec\":\"123456\",\"fd_37abacfaee0ba8\":\"100\",\"fd_37abad171a4670\":\"0\",\"fd_38d303859e135c\":\"PR20201207123211237\"," +
 				"\"fd_37abac2478b68e\":\"人民币-CNY\",\"fd_37abac2478b68e_text\":\"人民币-CNY\",\"fd_37ad099417f644\":\"0\",\"fd_37abad2de644b8\":\"456789\"," +
 				"\"fd_37abad2f5135b4\":\"工商银行\",\"fd_37abad3080c548\":\"收款银行地址\",\"fd_380dcb08f8e28e\":\"RP1212121212\"," +
 				"\"fd_37ac3c7b8ae23a.fd_37ac3db2fe7ef8\":[\"2020-08-24\",\"2020-08-24\"]," +
@@ -287,7 +289,7 @@ public class WebServiceClient {
 
 		String fileName = "31AE88-201802.xlsx";
 		AttachmentForm attForm01 = createUrlFile(fileName);
-		fileName = "测试.docx";
+		fileName = "测试 -222.docx";
 		AttachmentForm attForm02 = createAtt(fileName);
 
 		attForms.add(attForm01);
