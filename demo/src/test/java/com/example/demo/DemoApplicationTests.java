@@ -225,7 +225,7 @@ class DemoApplicationTests {
     }
 
     @Test
-    public void test19() {
+    public void test20() {
         List<Person2> list = new ArrayList<>();
         Person2 p1 = Person2.builder().age(1).address("11").name("33").build();
         Person2 p2 = Person2.builder().age(1).address("11").name("12").build();
@@ -239,6 +239,16 @@ class DemoApplicationTests {
         list.add(p5);
         Map<Integer, Map<String, List<Person2>>> collect = list.stream().collect(Collectors.groupingBy(Person2::getAge, Collectors.groupingBy(Person2::getAddress)));
         System.out.println(collect);
+    }
+
+    @Test
+    public void test21() {
+        List<Integer> l1 = Arrays.asList(1,2,3,4,5);
+        List<Integer> l2 = Arrays.asList(3,4,5);
+//        l1 = l1.stream().filter(item -> !l2.contains(item)).collect(Collectors.toList());
+//        System.out.println(l1);
+        l1.removeAll(l2);
+        System.out.println(l1);
     }
 
     @Test
