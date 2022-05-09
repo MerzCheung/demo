@@ -1,10 +1,10 @@
-package com.mingzhang.jiegon;
+package com.ming.zhang.customer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class JiegonApplicationTests {
+class CustomerApplicationTests {
 
     @Test
     void contextLoads() {
