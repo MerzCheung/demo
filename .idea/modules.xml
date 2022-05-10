@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/demo.iml" filepath="$PROJECT_DIR$/.idea/demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/truffle_demo/truffle_demo.iml" filepath="$PROJECT_DIR$/truffle_demo/truffle_demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web3js_demo/web3js_demo.iml" filepath="$PROJECT_DIR$/web3js_demo/web3js_demo.iml" />
     </modules>
   </component>
 </project>

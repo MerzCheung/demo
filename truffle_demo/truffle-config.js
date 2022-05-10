@@ -15,7 +15,7 @@ module.exports = {
             host: "127.0.0.1",
             port: 8545,
             network_id: "*",
-            from: "0x09245c57c040d1739A4ED2169037aC54b2359a72",
+            from: "0xc8109FD3af2C4E6F907DcD6063b9Aaf831410cd2",
         },
         // test: {
         //   host: "127.0.0.1",
@@ -34,6 +34,11 @@ module.exports = {
             network_id: 42,
             from: "0x09245c57c040d1739A4ED2169037aC54b2359a72",
         },
+    },
+    compilers: {
+        solc: {
+            version: "0.8.7"
+        }
     },
     solc: {
         optimizer: {
