@@ -37,15 +37,15 @@ module.exports = {
     },
     compilers: {
         solc: {
-            version: "0.8.7"
+            version: "0.8.7",
+            settings: {
+                optimizer: {
+                    enabled: true,
+                    runs: 200   // 优化次数
+                }
+            }
         }
     },
-    solc: {
-        optimizer: {
-            enabled: true,
-            runs: 200
-        }
-    }
     //
     // Truffle DB is currently disabled by default; to enable it, change enabled:
     // false to enabled: true. The default storage location can also be
