@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>以太坊钱包登录</title>
+</head>
+<body>
+    <div>
+        <span>account: </span>
+        <span id="accountSpan"></span>
+    </div>
+    <div>
+        <span>network: </span>
+        <span id="networkSpan"></span>
+    </div>
+    <div>
+        <span>chainId: </span>
+        <span id="chainIdSpan"></span>
+    </div>
+    <div>
+        <span>balance: </span>
+        <span id="balance"></span>
+    </div>
+
+    <button id="sendButton">转账</button>
+    <button id="getBalanceButton">获取余额</button>
+</body>
+<!--https://github.com/MetaMask/legacy-web3-->
+<script src="https://unpkg.com/@metamask/legacy-web3@latest/dist/metamask.web3.min.js"></script>
+<script>
+    const initalize = () => {
+
+        const isMetaMaskInstalled = () => {
+            const { ethereum } = window;
+            if (typeof ethereum === 'undefined') {
+                return false;
+            }
+            return Boolean(ethereum && ethereum.isMetaMask);
+        }
+
+        const getAccount = async () => {
+            try {
+                const account = await ethereum.request({method: 'eth_requestAccounts'});
+                accountSpan.innerHTML = account;
+            } catch (e) {
+                console.log(e)
+            }
+        }
+
+        const getNetworkAndChainId = async () => {
+            try {
+                const chainId = await ethereum.request({method: 'eth_chainId'});
+                chainIdSpan.innerHTML = chainId;
+                const networkId = await ethereum.request({method: 'net_version'});
+                networkSpan.innerHTML = networkId;
+            } catch (e) {
+                console.log(e)
+            }
+        }
+
+        const checkMetaMaskClient = async () => {
+            if (!isMetaMaskInstalled()) {
+                alert('please install MetaMask!')
+            } else {
+                getNetworkAndChainId();
+                getAccount();
+            }
+        }
+
+        checkMetaMaskClient();
+    }
+
+    //转账
+    sendButton.onclick = async () => {
+        try {
+            const accounts = await ethereum.request({method: 'eth_requestAccounts'});
+            web3.eth.sendTransaction({
+                from: accounts[0],
+                to: '0xaC85b057e30D57D6Be003f9F0C65059287248B1e',
+                value: 10000000000000000, //wei
+                gas: 21000,
+                gasPrice: 20000000000
+            }, (request) => {
+                console.log(request)
+            })
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    //获取余额
+    getBalanceButton.onclick = async () => {
+        try {
+            const accounts = await ethereum.request({method: 'eth_requestAccounts'});
+            ethereum.request({
+                method: 'eth_getBalance',
+                params: [
+                    accounts[0],
+                    'latest'
+                ]
+            }).then((result) => {
+                console.log(result)
+                balance.innerHTML = `${result} => ${parseInt(result, 16)} wei`
+            })
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+
+    window.addEventListener('DOMContentLoaded', initalize)
+
+</script>
+</html>
