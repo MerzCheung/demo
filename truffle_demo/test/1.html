@@ -41,7 +41,7 @@
         const getAccount = async () => {
             try {
                 const account = await ethereum.request({method: 'eth_requestAccounts'});
-                accountSpan.innerHTML = account;
+                accountSpan.innerHTML = account[0];
             } catch (e) {
                 console.log(e)
             }
@@ -64,6 +64,10 @@
             } else {
                 getNetworkAndChainId();
                 getAccount();
+
+                ethereum.on("accountsChanged", function (accountsChange) {
+                    accountSpan.innerHTML = accountsChange[0];
+                })
             }
         }
 
