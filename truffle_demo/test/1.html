@@ -65,6 +65,7 @@
                 getNetworkAndChainId();
                 getAccount();
 
+                // 切换账户
                 ethereum.on("accountsChanged", function (accountsChange) {
                     accountSpan.innerHTML = accountsChange[0];
                 })
