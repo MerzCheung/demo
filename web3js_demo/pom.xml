@@ -21,7 +21,7 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>
@@ -30,6 +30,7 @@
             <scope>test</scope>
         </dependency>
 
+        <!--https://github.com/web3j/web3j-spring-boot-starter-->
         <dependency>
             <groupId>org.web3j</groupId>
             <artifactId>web3j-spring-boot-starter</artifactId>
@@ -48,45 +49,48 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
+            <!--https://github.com/web3j/web3j-maven-plugin-->
             <plugin>
                 <groupId>org.web3j</groupId>
                 <artifactId>web3j-maven-plugin</artifactId>
                 <version>4.8.7</version>
                 <configuration>
-                    <packageName>generated.ming.zhang.web3js_demo</packageName>
-                    <sourceDestination>src/main/java/generated</sourceDestination>
-                    <nativeJavaType>true</nativeJavaType>
-                    <outputFormat>java,bin</outputFormat>
-                    <soliditySourceFiles>
-                        <directory>src/main/resources</directory>
-                        <includes>
-                            <include>**/*.sol</include>
-                        </includes>
-                    </soliditySourceFiles>
-                    <abiSourceFiles>
-                        <directory>src/main/resources</directory>
-                        <includes>
-                            <include>**/*.json</include>
-                        </includes>
-                    </abiSourceFiles>
-                    <outputDirectory>
-                        <java>src/main/java/generated</java>
-                        <bin>src/main/java/generated</bin>
-                        <abi>src/main/java/generated</abi>
-                    </outputDirectory>
-                    <contract>
-                        <includes>
-                            <include>greeter</include>
-                        </includes>
-                        <excludes>
-                            <exclude>mortal</exclude>
-                        </excludes>
-                    </contract>
-                    <pathPrefixes>
-                        <pathPrefix>dep=../dependencies</pathPrefix>
-                    </pathPrefixes>
+                    <soliditySourceFiles/>
                 </configuration>
+<!--                <configuration>-->
+<!--                    <packageName>ming.zhang.web3js_demo</packageName>-->
+<!--                    <sourceDestination>src/main/java/generated</sourceDestination>-->
+<!--                    <nativeJavaType>true</nativeJavaType>-->
+<!--                    <outputFormat>java,bin</outputFormat>-->
+<!--                    <soliditySourceFiles>-->
+<!--                        <directory>src/main/resources</directory>-->
+<!--                        <includes>-->
+<!--                            <include>**/*.sol</include>-->
+<!--                        </includes>-->
+<!--                    </soliditySourceFiles>-->
+<!--                    <abiSourceFiles>-->
+<!--                        <directory>src/main/resources</directory>-->
+<!--                        <includes>-->
+<!--                            <include>**/*.json</include>-->
+<!--                        </includes>-->
+<!--                    </abiSourceFiles>-->
+<!--                    <outputDirectory>-->
+<!--                        <java>src/main/java/generated</java>-->
+<!--                        <bin>src/main/java/generated</bin>-->
+<!--                        <abi>src/main/java/generated</abi>-->
+<!--                    </outputDirectory>-->
+<!--                    <contract>-->
+<!--                        <includes>-->
+<!--                            <include>greeter</include>-->
+<!--                        </includes>-->
+<!--                        <excludes>-->
+<!--                            <exclude>mortal</exclude>-->
+<!--                        </excludes>-->
+<!--                    </contract>-->
+<!--                    <pathPrefixes>-->
+<!--                        <pathPrefix>dep=../dependencies</pathPrefix>-->
+<!--                    </pathPrefixes>-->
+<!--                </configuration>-->
             </plugin>
         </plugins>
     </build>

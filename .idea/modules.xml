@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/demo.iml" filepath="$PROJECT_DIR$/demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_guide/java_guide.iml" filepath="$PROJECT_DIR$/java_guide/java_guide.iml" />
+      <module fileurl="file://$PROJECT_DIR$/truffle_demo/truffle_demo.iml" filepath="$PROJECT_DIR$/truffle_demo/truffle_demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/truffle_pet_shop/truffle_pet_shop.iml" filepath="$PROJECT_DIR$/truffle_pet_shop/truffle_pet_shop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web3js_demo/web3js_demo.iml" filepath="$PROJECT_DIR$/web3js_demo/web3js_demo.iml" />
     </modules>
   </component>
 </project>

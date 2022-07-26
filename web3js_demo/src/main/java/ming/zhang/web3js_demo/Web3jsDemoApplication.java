@@ -1,6 +1,5 @@
 package ming.zhang.web3js_demo;
 
-import generated.ming.zhang.web3js_demo.MyContract;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
