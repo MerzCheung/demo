@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@openzeppelin/contracts": "^4.7.1",
+    "@openzeppelin/contracts": "^4.7.2",
     "babel-runtime": "^6.26.0"
   },
   "devDependencies": {
