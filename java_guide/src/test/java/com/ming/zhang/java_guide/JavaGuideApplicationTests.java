@@ -20,6 +20,9 @@ class JavaGuideApplicationTests {
         Date date2 = DateUtil.parse(dateStr2);
         boolean isIn = DateUtil.isIn(date,date1,date2);
         System.out.println(isIn);
+        Date date3 = DateUtil.parse("2017-04-01", "yyyy-MM-dd");
+        Date date4 = DateUtil.parse("2017-04-01", "yyyy-MM-dd");
+        System.out.println(date3.after(date4));
     }
 
 }

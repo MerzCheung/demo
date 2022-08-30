@@ -50,9 +50,9 @@ module.exports = {
       host: "127.0.0.1",
       port: 8545,
       network_id: "*",
-      from: "0xb5eE1f8ABCFBC517032570026eB07d992f9A7aCf",
-      gas: 5000000,
-      gasPrice: 25000000000,
+      from: "0x67f09ED73F2Fe18965d6f35325Ec983Aff2532e6",
+      gas: 6721975,
+      gasPrice: 20000000000,
     },
 
     // Another network with more advanced options...
